@@ -1,0 +1,16 @@
+# Terraform's local working files - re-downloadable, don't need to be in GitHub
+.terraform/
+.terraform.lock.hcl
+
+# Terraform's state files - these can contain sensitive data (like passwords
+# once we add Secrets Manager). Never commit these.
+*.tfstate
+*.tfstate.*
+
+# Terraform crash logs, if they ever happen
+crash.log
+crash.*.log
+
+# If you ever create a file to override variables locally, keep it private
+*.tfvars
+*.tfvars.json
