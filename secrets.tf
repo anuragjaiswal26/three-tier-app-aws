@@ -12,6 +12,12 @@ resource "aws_secretsmanager_secret" "db_password" {
   name        = "three-tier-app/db-password"
   description = "Password for the RDS database, used by the EC2 web server"
 
+  # Learning-project setting: skip the default 30-day "pending deletion"
+  # window, so destroying and rebuilding this project repeatedly doesn't
+  # collide with a secret still waiting to be deleted. In a real company
+  # secret, this would normally be left at the default.
+  recovery_window_in_days = 0
+
   tags = {
     Name = "db-password-secret"
   }
